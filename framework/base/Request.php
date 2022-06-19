@@ -59,7 +59,8 @@ abstract class Request extends Component
     {
         if ($this->_scriptFile === null) {
             if (isset($_SERVER['SCRIPT_FILENAME'])) {
-                $this->setScriptFile($_SERVER['SCRIPT_FILENAME']);
+                //$this->setScriptFile($_SERVER['SCRIPT_FILENAME']); realpath('yii') return bool(false) and is_file('yii') return too
+                $this->_scriptFile = $_SERVER["SCRIPT_FILENAME"];
             } else {
                 throw new InvalidConfigException('Unable to determine the entry script file path.');
             }
