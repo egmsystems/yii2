@@ -24,14 +24,16 @@ class m150207_210500_i18n_init extends Migration
             // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
+        
+        $dbMessageSource = Yii::$container->get("yii\i18n\DbMessageSource");
 
-        $this->createTable('{{%source_message}}', [
+        $this->createTable($dbMessageSource->sourceMessageTable, [
             'id' => $this->primaryKey(),
             'category' => $this->string(),
             'message' => $this->text(),
         ], $tableOptions);
 
-        $this->createTable('{{%message}}', [
+        $this->createTable($dbMessageSource->messageTable, [
             'id' => $this->integer()->notNull(),
             'language' => $this->string(16)->notNull(),
             'translation' => $this->text(),
