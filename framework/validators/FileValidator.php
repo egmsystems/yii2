@@ -401,6 +401,12 @@ class FileValidator extends Validator
         $extension = mb_strtolower($file->extension, 'UTF-8');
 
         if ($this->checkExtensionByMimeType) {
+            /*
+                inside of FileHelper::getMimeType is the next lines, $file->tempName contain xxx.tmp and return null:
+                if (PHP_VERSION_ID >= 80100) {
+                    return static::getMimeTypeByExtension($file, $magicFile);
+                } 
+            */
             $mimeType = FileHelper::getMimeType($file->tempName, null, false);
             if ($mimeType === null) {
                 return false;
