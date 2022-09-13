@@ -481,11 +481,12 @@ abstract class Application extends Module
      * This is a simple wrapper of PHP function date_default_timezone_set().
      * Refer to the [php manual](https://www.php.net/manual/en/timezones.php) for available timezones.
      * @param string $value the time zone used by this application.
+	 * @return bool <p>This function returns <b><code>false</code></b> if the <code>timezoneId</code> isn't valid, or <b><code>true</code></b> otherwise.</p>
      * @see https://www.php.net/manual/en/function.date-default-timezone-set.php
      */
     public function setTimeZone($value)
     {
-        date_default_timezone_set($value);
+        return date_default_timezone_set($value);
     }
 
     /**
