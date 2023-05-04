@@ -156,7 +156,7 @@ class User extends Component
      */
     public $acceptableRedirectTypes = ['text/html', 'application/xhtml+xml'];
 
-    private $_access = [];
+    protected $_access = [];
 
 
     /**
